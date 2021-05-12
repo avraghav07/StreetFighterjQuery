@@ -5,10 +5,17 @@ $(document).ready(function() {
         $("#hadouken-sound")[0].play();
     }
 
+    $(".ryu").keydown(function(event) {
+        if (event.which == "88") {
+            $(".ryu-still").hide();
+            $(".ryu-cool").show();
+        }    
+    })
+
     $(".ryu").mouseenter(function() {
         $(".ryu-still").hide();
         $(".ryu-ready").show();
-    });
+    })
 
     $(".ryu").mouseleave(function() {
         $(".ryu-ready").hide();
