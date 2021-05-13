@@ -17,12 +17,12 @@ main {
     height: 494px;
 }
 
-.ryu-ready, .ryu-still, .ryu-throwing {
+.ryu-ready, .ryu-still, .ryu-throwing, .ryu-cool {
   width: 659px;
   height: 494px;
 }
 
-.ryu-ready, .ryu-throwing {
+.ryu-ready, .ryu-throwing, .ryu-cool {
   display: none;
 } 
 
@@ -58,7 +58,7 @@ main {
     z-index: 10;
 }
 
-ul {
+.instructions {
     position: absolute;
     list-style-type: none;
     right: 15px;
