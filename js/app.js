@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    x = false;
     function playHadouken() {
         $("#hadouken-sound")[0].volume = 0.5;
         $("#hadouken-sound")[0].load();
@@ -16,31 +17,9 @@ $(document).ready(function() {
         $(".ryu-still").show();
         $(".ryu-cool").hide();
     })
-
-    .mousedown(function() {
-        playHadouken();
-        console.log("mousedown");
-        $(".ryu-ready").hide();
-        $(".ryu-throwing").show();
-        $(".hadouken").finish().show()
-        .animate (
-            {"left":"1250px"},
-            500,
-            function() {
-                $(".hadouken").hide();
-                $(".hadouken").css("left", "550px");
-            }
-        )
-    })
-
-    .mouseup(function() {
-        console.log("mouseup");
-        $(".ryu-throwing").hide();
-        $(".ryu-ready").show();
-    })
-
     $("body").keydown(function(event) {
         if (event.which == "88") {
+            x = true;
             $(".ryu-still").hide();
             $(".ryu-cool").show();
             $(".ryu-ready").hide();
@@ -49,8 +28,35 @@ $(document).ready(function() {
     })
     $("body").keyup(function(event) {
         if (event.which == "88") {
+            x = false;
             $(".ryu-cool").hide();
-            $("ryu.still").show();
-    }
-})
+            $(".ryu-ready").show();    
+        }
+    })
+    .mousedown(function() {
+        if (!x) {
+            playHadouken();
+            console.log("mousedown");
+            $(".ryu-ready").hide();
+            $(".ryu-cool").hide();
+            $(".ryu-throwing").show();
+            $(".hadouken").finish().show()
+            .animate (
+                {"left":"1250px"},
+                500,
+                function() {
+                    $(".ryu-cool").hide();
+                    $(".hadouken").hide();
+                    $(".hadouken").css("left", "550px");
+                }
+            )
+        }    
+    })
+    .mouseup(function() {
+        console.log("mouseup");
+        $(".ryu-throwing").hide();
+        $(".ryu-ready").show();
+        $(".ryu-cool").hide();
+    })
+
 });
