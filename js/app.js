@@ -5,18 +5,6 @@ $(document).ready(function() {
         $("#hadouken-sound")[0].load();
         $("#hadouken-sound")[0].play();
     }
-
-    $(".ryu").mouseenter(function() {
-        $(".ryu-still").hide();
-        $(".ryu-ready").show();
-        
-    })
-
-    $(".ryu").mouseleave(function() {
-        $(".ryu-ready").hide();
-        $(".ryu-still").show();
-        $(".ryu-cool").hide();
-    })
     $("body").keydown(function(event) {
         if (event.which == "88") {
             x = true;
@@ -53,10 +41,24 @@ $(document).ready(function() {
         }    
     })
     .mouseup(function() {
-        console.log("mouseup");
-        $(".ryu-throwing").hide();
-        $(".ryu-ready").show();
-        $(".ryu-cool").hide();
+        if (!x) {
+            console.log("mouseup");
+            $(".ryu-throwing").hide();
+            $(".ryu-ready").show();
+            $(".ryu-cool").hide();
+        }    
     })
-
+    $(".ryu").mouseenter(function() {
+        if (!x) {
+            $(".ryu-still").hide();
+            $(".ryu-ready").show();
+        }     
+    })
+    $(".ryu").mouseleave(function() {
+        if (!x) {
+            $(".ryu-ready").hide();
+            $(".ryu-still").show();
+            $(".ryu-cool").hide();
+        }    
+    })
 });
